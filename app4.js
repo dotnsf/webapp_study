@@ -1,0 +1,41 @@
+//. app4.js
+var bodyParser = require( 'body-parser' );
+var cfenv = require( 'cfenv' );
+var express = require( 'express' );
+
+var app = express();
+var appEnv = cfenv.getAppEnv();
+
+app.use( bodyParser.urlencoded( { extended: true } ) );
+app.use( bodyParser.json() );
+app.use( express.static( __dirname + '/public' ) );
+app.use( express.Router() );
+
+app.get( '/hello', function( req, res ){
+  res.write( 'Hello Express.' );
+  res.end();
+});
+
+var names = [];
+app.post( '/item', function( req, res ){
+  res.contentType( 'application/json; charset=utf-8' );
+
+  var name = req.body.name;
+  names.push( name );
+
+  res.write( JSON.stringify( name ) );
+  res.end();
+});
+
+app.get( '/items', function( req, res ){
+  res.contentType( 'application/json; charset=utf-8' );
+
+  res.write( JSON.stringify( names ) );
+  res.end();
+});
+
+var port = appEnv.port | 3000;
+app.listen( port );
+
+console.log( 'server starting on ' + port + ' ...' );
+

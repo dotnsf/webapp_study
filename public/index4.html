@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>index4.html</title>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+$(function(){
+  getItems();
+});
+
+function getItems(){
+  $('#list').html( '' );
+  $.ajax({
+    type: 'GET',
+    url: '/items',
+    success: function( items ){
+      items.forEach( function( item ){
+        var li = '<li>' + item + '</li>';
+        $('#list').append( li );
+      });
+      var li0 = '<li><form id="frm"><input type="text" id="name"/></form></li>';
+      $('#list').append( li0 );
+
+      $('#frm').submit( function(){
+        postItem();
+        return false;
+      });
+    },
+    error: function(){
+    }
+  });
+}
+
+function postItem(){
+  var name = $('#name').val();
+  $.ajax({
+    type: 'POST',
+    url: '/item',
+    data: { name: name },
+    success: function( result ){
+      getItems();
+    },
+    error: function(){
+    }
+  });
+}
+</script>
+</head>
+<body>
+ <h1>index4.html</h1>
+
+ <ul id="list">
+ </ul>
+</body>
+</html>
+
