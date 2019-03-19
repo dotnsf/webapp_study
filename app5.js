@@ -1,8 +1,8 @@
 //. app5.js
 
 //. Edit with valid username / password / dbname
-var db_username = 'b612b8b5-b4bb-4676-90c3-e0b6a45a639c-bluemix';
-var db_password = '5a6a44e811acbb8ce2bc65d734d78826aa0cd6e06133cc12913ab3f4310fa15c';
+var db_username = '';
+var db_password = '';
 var db_name = 'mydb';
 
 var bodyParser = require( 'body-parser' );
