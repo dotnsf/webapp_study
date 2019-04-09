@@ -8,6 +8,7 @@
         "@cloudant/cloudant": "^3.0.2",
         "body-parser": "1.18.3",
         "cfenv": "~1.0.0",
+        "ejs": "^2.3.4",
         "express": "4.1.x"
     },
     "repository": {},

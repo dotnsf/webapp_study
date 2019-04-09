@@ -1,0 +1,17 @@
+<html>
+<head>
+<title>index6.ejs</title>
+<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+</head>
+<body>
+ <h1>index4.html</h1>
+
+ <ul id="list">
+<% names.forEach( function( name ){ %>
+   <li><%= name %></li>
+<% }); %>
+   <li><form id="frm" method="POST" action="/item"><input type="text" name="name" id="name"/></form></li>
+ </ul>
+</body>
+</html>
+
